@@ -23,4 +23,7 @@
 
 
 - **Improvements**
-    * Current code is a bit static in the sense that a lambda will need to be created everytime a rds is spun up. The proper direction would be to have a single lambda that can be invoked anytime a rds is spun up
+    * Current code is a bit static in the sense that a lambda will need to be created everytime a rds is spun up. The proper direction would be to have a single lambda that can be invoked anytime a rds is spun up.
+
+- **Caveats.**
+    * timing issues

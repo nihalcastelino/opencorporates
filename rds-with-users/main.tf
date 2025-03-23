@@ -43,3 +43,20 @@ module "rds" {
   rds_security_group_name = "rds-test-security-group"
 }
 
+resource "aws_lambda_invocation" "setup_db_users_invoke" {
+  function_name = module.lambda.function_name
+  input = jsonencode({
+    action = "create_users"
+  })
+
+  depends_on = [
+    module.lambda,
+    module.rds
+  ]
+
+  # Only run this once
+  triggers = {
+    # Generate a new uuid each time to force redeployment - normally you'd use a better trigger
+    redeployment = uuid()
+  }
+}
