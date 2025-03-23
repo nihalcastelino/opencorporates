@@ -16,7 +16,7 @@ module "lambda" {
   purpose                    = "private-subnet"
   runtime                    = "python3.13"
   vpc_name                   = "dev-vpc"
-
+  depends_on = [ module.rds ]
 }
 
 data "archive_file" "lambda_zip" {
