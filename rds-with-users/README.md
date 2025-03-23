@@ -1,5 +1,9 @@
 <!-- BEGIN_TF_DOCS -->
 
+## Requirements
+- Requires mysql and postgres modules for python
+## Notes
+- The script is zipped and passed to module to better enable differnt scripts etc instead of hardcoding the file in child module.
 
 ## Providers
 
