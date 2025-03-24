@@ -27,3 +27,6 @@
 
 - **Caveats.**
     * timing issues, hence added the depends on for the rds and lambda modules
+ 
+- **Alterate Approach**
+   * to take a snapshot of a database with the required users and use the snapshot to create the cluster
