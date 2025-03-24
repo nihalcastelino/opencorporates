@@ -20,7 +20,7 @@ resource "aws_rds_cluster" "aurora_serverless" {
   master_username         = var.master_username
   master_password         = random_password.master_password.result
   db_subnet_group_name    = aws_db_subnet_group.aurora_subnet_group.name
-  vpc_security_group_ids  = data.aws_security_groups.rds_security_groups
+  vpc_security_group_ids  = data.aws_security_groups.rds_security_groups.ids
   skip_final_snapshot     = true
   backup_retention_period = 7
   preferred_backup_window = "03:00-05:00"
