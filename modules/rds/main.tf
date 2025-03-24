@@ -1,7 +1,7 @@
 # Create DB subnet group
 resource "aws_db_subnet_group" "aurora_subnet_group" {
   name       = "${var.environment}-aurora-subnet-group"
-  subnet_ids = module.vpc.private_subnets
+  subnet_ids = local.private_subnet_ids
 
   tags = {
     Name        = "${var.environment}-aurora-subnet-group"
@@ -18,9 +18,9 @@ resource "aws_rds_cluster" "aurora_serverless" {
   engine_mode             = "provisioned"
   database_name           = var.db_name
   master_username         = var.master_username
-  master_password         = random_password.master_password
+  master_password         = random_password.master_password.result
   db_subnet_group_name    = aws_db_subnet_group.aurora_subnet_group.name
-  vpc_security_group_ids  = [data.aws_security_groups.rds_security_groups]
+  vpc_security_group_ids  = data.aws_security_groups.rds_security_groups
   skip_final_snapshot     = true
   backup_retention_period = 7
   preferred_backup_window = "03:00-05:00"

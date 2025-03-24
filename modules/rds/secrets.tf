@@ -50,10 +50,10 @@ resource "aws_kms_key" "mysql" {
 }
 
 resource "aws_kms_alias" "mysql-alias" {
-  target_key_id = aws_kms_key.mysql[count.index].id
+  target_key_id = aws_kms_key.mysql.id
 }
 
-resource "aws_kms_key_policy" "mysql" {
-  key_id = aws_kms_key.mysql[count.index].id
-  policy = data.aws_iam_policy_document.kms.json
-}
+# resource "aws_kms_key_policy" "mysql" {
+#   key_id = aws_kms_key.mysql.id
+#   policy = data.aws_iam_policy_document.kms.json
+# }
