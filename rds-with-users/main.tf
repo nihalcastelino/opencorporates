@@ -44,7 +44,7 @@ module "rds" {
 }
 
 resource "aws_lambda_invocation" "setup_db_users_invoke" {
-  function_name = module.lambda.function_name
+  function_name = module.lambda.lambda_name
   input = jsonencode({
     action = "create_users"
   })

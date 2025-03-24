@@ -19,7 +19,7 @@ variable "region" {
 
 
 variable "cidr_block" {
-  default = "10.32.0.0/20"
+  default = "192.168.0.0/16"
 }
 
 
